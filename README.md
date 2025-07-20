@@ -1,1 +1,1 @@
-# GraphicPortfolio
+This is a personal graphic design portfolio showcasing my work across various domains. It highlights my skills in tools like Canva, Photoshop, and Figma, and demonstrates my understanding of visual storytelling, color theory, and layout design. Each project reflects my passion for clean, impactful visuals and my ability to communicate messages effectively through design.
