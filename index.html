@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphic Design Portfolio</title>
+    <script>
+function openModal(src) {
+  document.getElementById("modalImg").src = src;
+  document.getElementById("imgModal").style.display = "block";
+}
+
+function closeModal() {
+  document.getElementById("imgModal").style.display = "none";
+}
+    document
+
+
+document.addEventListener("DOMContentLoaded",function(){
+    const images=document.querySelectorAll(".project-img");
+    const fullscreenImage=document.getElementById("fullscreenImage");
+    const container=document.getElementById("fullscreenContainer");
+    images.forEach(img=>{
+        img.addEventListener("click",()=>{
+            fullscreenImage.src=img.src;
+            fullscreenImage.classList.add("active");
+        });
+    });
+    fullscreenImage.addEventListener("click",()=>{
+        fullscreenImage.classList.remove("active");
+    });
+});
+</script>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 80px 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 4px;
+            background: #6c63ff;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #6c63ff;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: #564fc9;
+            transform: translateY(-3px);
+        }
+        
+        /* Cover Page */
+        #cover {
+            background: linear-gradient(135deg, #6c63ff 0%, #4a42d6 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        #cover h1 {
+            font-size: 4.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        #cover p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        /* About Me */
+        #about {
+            background-color: white;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+        }
+        
+        .highlights {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        
+        .profile-img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Skills */
+        #skills {
+            background-color: #f5f5ff;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .skill-category {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .skill-category h3 {
+            margin-bottom: 20px;
+            color: #6c63ff;
+        }
+        
+        .skill-list {
+            list-style: none;
+        }
+        
+        .skill-list li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .skill-list li::before {
+            content: '•';
+            color: #6c63ff;
+            font-size: 1.5rem;
+        }
+        
+        /* Projects */
+        #projects {
+            background-color: white;
+        }
+        .fullscreen-img{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: contain;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 9999;
+            transition: all 0.5s ease-in-out;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .fullscreen-img.active{
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            height: auto; /* Changed from fixed height */
+            min-height: 500px; /* Minimum height */
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+        .project-img-container {
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff;
+        }
+        
+        .project-img {
+            width: auto;
+            height: auto;
+            max-height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+        .project-card:hover .project-img {
+            transform: scale(1.05);
+        }
+
+        .project-info {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .project-info h4 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #6c63ff;
+        }
+        
+.project-info h3 {
+    margin-bottom: 10px;
+}
+        
+.tools-used {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .project-info ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+            flex: 1;
+        }
+        
+        
+        /* Contact */
+        #contact {
+            background: linear-gradient(135deg, #6c63ff 0%, #4a42d6 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        #contact h2::after {
+            background: white;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .contact-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .contact-links a:hover {
+            transform: translateY(-5px);
+        }
+        
+        .qr-code {
+            margin-top: 50px;
+            width: 150px;
+            height: 150px;
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            #cover h1 {
+                font-size: 3rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Cover Page -->
+    <section id="cover">
+        <div class="container">
+            <h1>Sahana Rao</h1>
+            <p>Graphic Design Portfolio</p>
+            <div class="contact-info">
+                <a href="mailto:your.email@example.com"><i class="fas fa-envelope"></i> sahanarao020@gmail.com</a>
+                <a href="tel:+1234567890"><i class="fas fa-phone"></i> +91 8722628294</a>
+                <a href="#"><i class="fab fa-linkedin"></i> https://www.linkedin.com/in/sahana-rao-8a9a30330/</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me -->
+    <section id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About Me</h2>
+                    <p>I'm a passionate student and creative thinker with experience in Canva-based designs. As the Media Head of AICUF SJEC Mangalore, I enjoy transforming ideas into engaging visuals that tell stories and drive impact.</p>
+                    <p><strong>Tools I use:</strong> Canva, Adobe Express, Figma</p>
+                   
+                    <a href="#projects" class="btn">View My Work</a>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+        <div class="container">
+            <h2>Skills Overview</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Design Tools</h3>
+                    <ul class="skill-list">
+                        <li>Canva (Advanced)</li>
+                        <li>Photoshop (Basic)</li>
+                        <li>Figma (Basic)</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Design Principles</h3>
+                    <ul class="skill-list">
+                        <li>Typography</li>
+                        <li>Color Theory</li>
+                        <li>Layout</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Soft Skills</h3>
+                    <ul class="skill-list">
+                        <li>Creativity</li>
+                        <li>Communication</li>
+                        <li>Teamwork</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- Projects -->
+<section id="projects">
+  <div class="container">
+    <h2>My Projects</h2>
+
+    <h3 style="margin: 30px 0 20px;">🎉 Event Promotions</h3>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-img-container">
+            <img src="event.png" alt="Poster Design" class="project-img">
+        </div>
+        <div class="project-info">
+          <h3>Event Poster</h3>
+          <span class="tools-used">Tools: Canva</span>
+          <ul>
+            <li>Created event poster for the AICUF Association Inaugural Function at SJEC</li>
+            <li>Designed formal and elegant layout using structured text hierarchy</li>
+            <li>Incorporated floral accents and dark background for visual depth</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img-container">
+            <img src="invita.png" alt="Social Media Post" class="project-img">
+        </div>
+        <div class="project-info">
+          <h3>Invitation Design</h3>
+          <span class="tools-used">Tools: Canva</span>
+          <ul>
+            <li>Developed an official invitation card for the same AICUF function</li>
+            <li>Maintained a clean, floral-themed design to convey formality and hospitality</li>
+            <li>Balanced textual content and decorative elements for visual harmony</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin: 50px 0 20px;">🌿 Awareness Campaigns</h3>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-img-container">
+            <img src="Awarness.jpg" alt="Environmental Campaign" class="project-img">
+        </div>
+        <div class="project-info">
+          <h3>World Day Against Child Labour</h3>
+          <span class="tools-used">Tools: Canva</span>
+          <ul>
+            <li>Designed a poster to raise awareness on child labour for World Day Against Child Labour (12th June)</li>
+            <li>Employed impactful imagery and emotional typography to amplify the message</li>
+            <li>Integrated quote and date to enhance awareness and urgency</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-img-container">
+            <img src="Electrical safety.png" alt="Infographic" class="project-img">
+        </div>
+        <div class="project-info">
+          <h3> Electrical Safety Poster Design</h3>
+          <span class="tools-used">Tools: Canva</span>
+          <ul>
+            <li>Created a safety awareness poster emphasizing key electrical safety practices</li>
+            <li>Focused on visual clarity using icons, structured text, and bold warning colors</li>
+            <li>Designed a poster highlighting key electrical safety tips, including using insulated tools, avoiding wet hands, and preventing circuit overloads</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Image Modal -->
+<div id="imgModal" class="modal" onclick="closeModal()">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="modalImg">
+</div>
+
+
+    <!-- Contact -->
+    <section id="contact">
+        <div class="container">
+            <h2>Let's Connect!</h2>
+            <p>Looking forward to bringing creative ideas to life with your team!</p>
+            <div class="contact-links">
+                <a href="mailto:sahanarao020@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+                <a href="tel:+91 8722628294"><i class="fas fa-phone"></i> Phone</a>
+                <a href="https://www.linkedin.com/in/sahana-rao-8a9a30330/"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            </div>
+            
+        </div>
+    </section>
+    <div id="fullscreenContainer">
+        <img id="fullscreenImage" class="fullscreen-img" src="" alt="Full View">
+    </div>
+</body>
+</html>
